@@ -1,0 +1,4 @@
+interface:
+  display_name: "Reverse Engineering"
+  short_description: "Full repository reverse engineering with standard report export."
+  default_prompt: "Do a full reverse engineering of this repository and export the reports."
