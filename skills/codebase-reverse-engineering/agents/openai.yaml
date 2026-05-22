@@ -1,0 +1,6 @@
+interface:
+  display_name: "Codebase Reverse Engineering"
+  short_description: "Deep repository investigation with evidence, flow tracing, and exportable reports."
+  default_prompt: "Reverse engineer this repository, identify the real entrypoints and runtime flow, and export the result to reports/<Project>/."
+policy:
+  allow_implicit_invocation: true
