@@ -1,6 +1,6 @@
 ---
 name: codebase-reverse-engineering
-description: Use este skill quando a tarefa exigir entender como um projeto funciona de verdade lendo o codigo, fazendo engenharia reversa de projetos feitos por terceiros, mapeando entrypoints, fluxos, dependencias, contratos, padroes estruturais e causas tecnicas sem assumir nada sem evidencia direta do repositorio.
+description: Use this skill when the task requires understanding how a project really works by reading the code, reverse engineering third-party projects, mapping entrypoints, flows, dependencies, contracts, structural patterns, and technical causes without assuming anything not supported by direct repository evidence.
 metadata:
   priority: 9
   promptSignals:
@@ -68,221 +68,221 @@ metadata:
 
 # Codebase Reverse Engineering
 
-Use este skill quando o objetivo for aprender, explicar, auditar ou depurar como um repositorio funciona na pratica.
+Use this skill when the goal is to learn, explain, audit, or debug how a repository works in practice.
 
-Ele foi pensado especialmente para projetos construidos por outras pessoas, com inteligencia artificial ou nao, quando a equipe atual precisa formar uma base confiavel de conhecimento sobre como aquele sistema realmente opera.
+It is designed especially for projects built by other people, whether AI-assisted or not, when the current team needs a reliable base of knowledge about how that system actually operates.
 
-Ele existe para responder perguntas como:
+It exists to answer questions such as:
 
-- onde uma feature realmente comeca e termina
-- qual e o entrypoint de runtime
-- como o dado cruza camadas, modulos e servicos
-- quais padroes arquiteturais estao em uso
-- quais dependencias sao centrais e quais sao detalhes
-- porque uma estrutura foi feita desse jeito
-- onde um bug provavelmente nasce e como ele se propaga
+- where a feature really starts and ends
+- what the runtime entrypoint is
+- how data crosses layers, modules, and services
+- which architectural patterns are in use
+- which dependencies are central and which are details
+- why a structure was built this way
+- where a bug likely starts and how it propagates
 
-## Regra central
+## Core Rule
 
-Nao suponha. Nao complete lacunas com intuicao. Nao responda com base em convencao generica se o repositorio ainda nao foi lido.
+Do not assume. Do not fill gaps with intuition. Do not answer based on generic convention if the repository has not been read yet.
 
-E tambem nao pare na primeira explicacao plausivel. Sempre que um conceito, regra, dependencia, boundary ou fluxo parecer entendido, force novas perguntas sobre ele ate descobrir como aquilo realmente se sustenta no codigo.
+Also do not stop at the first plausible explanation. Whenever a concept, rule, dependency, boundary, or flow seems understood, force new questions about it until you discover how it is actually sustained in the code.
 
-Se algo nao estiver confirmado no codigo, diga explicitamente:
+If something is not confirmed in the code, say it explicitly:
 
-- `nao confirmado no codigo lido`
-- `nao encontrei evidencia local para isso`
-- `preciso ler mais arquivos para fechar essa resposta`
+- `not confirmed in the code reviewed`
+- `I did not find local evidence for this`
+- `I need to read more files to close this answer`
 
-## Modo de investigacao profunda
+## Deep Investigation Mode
 
-Toda vez que este skill encontrar uma regra nova do sistema, um conceito importante ou um comportamento relevante, ele deve entrar em um ciclo de auto-pergunta antes de concluir.
+Every time this skill finds a new system rule, an important concept, or relevant behavior, it should enter a self-questioning cycle before concluding.
 
-Perguntas que ele deve fazer para si mesmo:
+Questions it should ask itself:
 
-- de onde exatamente essa regra nasce no codigo
-- quem depende dessa regra
-- quem quebra se essa regra mudar
-- qual e o entrypoint dessa decisao
-- onde essa regra e aplicada, validada, transformada ou burlada
-- isso vale para o sistema inteiro ou apenas para esse fluxo
-- existe contradicao ou excecao em outro arquivo
-- existe composicao, adapter, factory, provider, middleware, hook ou controller sustentando isso
-- qual dado entra, qual dado sai e quem faz a traducao entre camadas
-- o que ainda falta ler para transformar essa explicacao em conhecimento completo
+- where exactly does this rule originate in the code
+- who depends on this rule
+- who breaks if this rule changes
+- what is the entrypoint for this decision
+- where is this rule applied, validated, transformed, or bypassed
+- does this apply to the whole system or only to this flow
+- is there a contradiction or exception in another file
+- is there a composition, adapter, factory, provider, middleware, hook, or controller sustaining this
+- what data comes in, what data goes out, and who translates between layers
+- what still needs to be read to turn this explanation into complete knowledge
 
-Se ainda houver profundidade a extrair, continue perguntando e buscando evidencia antes de responder.
+If there is still more depth to extract, keep asking and gathering evidence before responding.
 
-## Leia Antes
+## Read First
 
 - `references/investigation-checklist.md`
 - `references/output-contract.md`
 - `../shared/references/multilingual-export-pattern.md`
 
-## Processo
+## Process
 
-1. Identifique a pergunta operacional real.
-2. Localize os arquivos de bootstrap e os entrypoints do recorte investigado.
-3. Mapeie ownership do fluxo:
-   - quem recebe a entrada
-   - quem transforma
-   - quem orquestra
-   - quem integra com fora
-   - quem renderiza, persiste ou publica
-4. Siga o fluxo real no codigo usando simbolos, imports, chamadas, schemas, rotas, handlers e configuracoes.
-5. A cada conceito ou regra descoberta, faca perguntas excessivas e profundas para expandir o entendimento antes de concluir.
-6. Monte um mapa de evidencias com arquivos e trechos concretos antes de concluir.
-7. Identifique regras de estrutura:
-   - camadas
-   - direcao de dependencia
-   - contratos
+1. Identify the real operational question.
+2. Locate the bootstrap files and entrypoints for the investigated scope.
+3. Map flow ownership:
+   - who receives the input
+   - who transforms it
+   - who orchestrates it
+   - who integrates with external systems
+   - who renders, persists, or publishes it
+4. Follow the real code flow using symbols, imports, calls, schemas, routes, handlers, and configuration.
+5. For each discovered concept or rule, ask deep and excessive questions to expand understanding before concluding.
+6. Build an evidence map with concrete files and excerpts before concluding.
+7. Identify structural rules:
+   - layers
+   - dependency direction
+   - contracts
    - factories
-   - adaptadores
+   - adapters
    - hooks
-   - servicos
+   - services
    - use cases
-   - entidades
-8. Identifique o porque estrutural de cada decisao importante:
-   - isolamento de mudanca
-   - reuso
-   - boundary de framework
-   - testabilidade
-   - acoplamento controlado
-   - composicao de runtime
-9. Para debugging, siga a falha do sintoma ate a origem:
-   - entrada
-   - estado intermediario
+   - entities
+8. Identify the structural why behind each important decision:
+   - change isolation
+   - reuse
+   - framework boundary
+   - testability
+   - controlled coupling
+   - runtime composition
+9. For debugging, follow the failure from symptom to origin:
+   - input
+   - intermediate state
    - boundary
-   - causa raiz
-10. Consolide o entendimento em um relatorio de engenharia reversa para transferencia de conhecimento.
-11. Responda apenas o que estiver sustentado por evidencia lida.
-12. Sempre feche com resumo, exemplo e lacunas restantes.
+   - root cause
+10. Consolidate the understanding into a reverse-engineering report for knowledge transfer.
+11. Answer only what is supported by the evidence reviewed.
+12. Always close with a summary, example, and remaining gaps.
 
 ## Guardrails
 
-- Ler o codigo antes de opinar sobre arquitetura.
-- Preferir `rg`, leitura de manifests, configs, rotas, schemas e arquivos de composicao antes de abrir arquivos aleatorios.
-- Sempre aprofundar a descoberta com auto-perguntas antes de chamar algo de entendido.
-- Nao chamar algo de padrao arquitetural sem apontar onde ele aparece.
-- Nao dizer que uma dependencia e central sem mostrar onde ela entra no runtime.
-- Nao dizer que um modulo e morto sem procurar referencias.
-- Nao dizer que um bug esta resolvido sem explicar a cadeia causal.
-- Nao encerrar na descricao do fluxo sem explicar tambem ownership, contratos, boundaries e propagacao.
-- Quando houver mais de um fluxo possivel, separar:
-  - `fluxo confirmado`
-  - `hipotese ainda nao confirmada`
+- Read the code before giving an opinion about architecture.
+- Prefer `rg`, reading manifests, configs, routes, schemas, and composition files before opening random files.
+- Always deepen discovery with self-questions before calling something understood.
+- Do not call something an architectural pattern without pointing to where it appears.
+- Do not say a dependency is central without showing where it enters runtime.
+- Do not say a module is dead without looking for references.
+- Do not say a bug is resolved without explaining the causal chain.
+- Do not stop at the flow description without also explaining ownership, contracts, boundaries, and propagation.
+- When there is more than one possible flow, separate:
+  - `confirmed flow`
+  - `unconfirmed hypothesis`
 
-## O que este skill deve entregar
+## What This Skill Should Deliver
 
-- explicacao direta e objetiva
-- relatorio final de engenharia reversa voltado a transferencia de conhecimento
-- guia de onboarding operacional para novos engenheiros
-- arquivo visual de arquitetura e fluxos em Mermaid
-- raciocinio tecnico por tras da estrutura
-- exemplo concreto do repositorio
-- grafo ASCII de fluxo ou dependencia quando isso ajudar
-- mapa do fluxo ponta a ponta, da entrada inicial ate a saida final
-- padroes estruturais encontrados e onde aparecem
-- resumo final de alto sinal
+- direct and objective explanation
+- final reverse-engineering report focused on knowledge transfer
+- operational onboarding guide for new engineers
+- visual architecture and flow artifact in Mermaid
+- technical reasoning behind the structure
+- concrete repository example
+- ASCII graph of flow or dependency when that helps
+- end-to-end flow map, from initial input to final output
+- structural patterns found and where they appear
+- high-signal final summary
 
-## Formato minimo de resposta
+## Minimum Response Format
 
-1. `Resumo`
-2. `Como funciona`
-3. `Por que funciona assim`
-4. `Padroes encontrados`
-5. `Grafo`
-6. `Exemplo concreto`
-7. `Lacunas ou proximos arquivos a ler`
+1. `Summary`
+2. `How It Works`
+3. `Why It Works This Way`
+4. `Patterns Found`
+5. `Graph`
+6. `Concrete Example`
+7. `Gaps Or Next Files To Read`
 
-## Estrutura de saida obrigatoria
+## Required Output Structure
 
-Quando este skill produzir documentacao exportavel, ele deve criar uma pasta:
+When this skill produces exportable documentation, it should create a folder:
 
-- `reports/<NomeDoProjeto>/`
+- `reports/<ProjectName>/`
 
-Dentro dela, deve gerar por padrao estes tres arquivos:
+Inside it, generate these three files by default:
 
 1. `REVERSE-ENGINEERING.md`
 2. `ONBOARDING-GUIDE.md`
 3. `ARCHITECTURE-GRAPHS.md`
 
-## Idioma dos reports
+## Report Language
 
-- Detecte o idioma principal do pedido do usuario antes de escrever os reports.
-- Escreva o conteudo dos reports no mesmo idioma do pedido do usuario.
-- Preserve os nomes dos arquivos em ingles para manter o padrao do plugin.
-- Se o idioma estiver ambiguo ou misto, use o idioma predominante do primeiro pedido.
-- Se ainda assim nao ficar claro, use ingles.
+- Detect the primary language of the user's request before writing the reports.
+- Write the report content in the same language as the user's request.
+- Preserve file names in English to maintain the plugin standard.
+- If the language is ambiguous or mixed, use the predominant language from the first request.
+- If it is still unclear, use English.
 
-### Responsabilidade de cada arquivo
+### Responsibility Of Each File
 
 - `REVERSE-ENGINEERING.md`
-  - analise principal baseada em evidencia
+  - primary evidence-based analysis
   - entrypoints
-  - fluxos
+  - flows
   - ownership
-  - padroes
-  - lacunas
+  - patterns
+  - gaps
 
 - `ONBOARDING-GUIDE.md`
-  - leitura guiada
-  - tabela `arquivo -> responsabilidade -> quando ler`
-  - checklist de onboarding
-  - playbooks curtos por objetivo
+  - guided reading
+  - table `file -> responsibility -> when to read`
+  - onboarding checklist
+  - short goal-based playbooks
 
 - `ARCHITECTURE-GRAPHS.md`
-  - diagramas Mermaid separados por visao
-  - fluxos por harness
-  - fluxo principal
-  - fluxo de execucao
-  - mapa estrutural de componentes e conexoes
+  - Mermaid diagrams separated by view
+  - harness-specific flows
+  - primary flow
+  - execution flow
+  - structural map of components and connections
 
-Se fizer sentido, `REVERSE-ENGINEERING.md` e `ONBOARDING-GUIDE.md` devem apontar para `ARCHITECTURE-GRAPHS.md` nos trechos em que a visualizacao ajudar.
+When helpful, `REVERSE-ENGINEERING.md` and `ONBOARDING-GUIDE.md` should point to `ARCHITECTURE-GRAPHS.md` in sections where visualization adds clarity.
 
-## Resultado esperado
+## Expected Result
 
-O resultado esperado deste skill e um relatorio que permita a engenheiros entender:
+The expected result of this skill is a report that allows engineers to understand:
 
-- como o projeto inicia
-- como os fluxos atravessam camadas
-- quais sao os modulos centrais
-- quais contratos e boundaries organizam o sistema
-- quais padroes aparecem de fato
-- onde estao os pontos de extensao, risco e acoplamento
+- how the project starts
+- how flows cross layers
+- which modules are central
+- which contracts and boundaries organize the system
+- which patterns truly appear
+- where the extension, risk, and coupling points are
 
-E, quando houver export, esse conhecimento deve ficar organizado de forma repetivel dentro de `reports/<NomeDoProjeto>/`.
+And when export is required, that knowledge should be organized repeatably inside `reports/<ProjectName>/`.
 
-O objetivo nao e apenas responder uma duvida pontual. O objetivo final e construir conhecimento operacional confiavel sobre como o projeto funciona.
+The goal is not only to answer a one-off question. The end goal is to build reliable operational knowledge about how the project works.
 
-## Heuristicas de investigacao
+## Investigation Heuristics
 
-- Comece por:
-  - `package.json`, `turbo.json`, manifests, configs de framework, bootstrap de app, registradores de rota e pontos de composicao
-- Para frontend:
-  - comece por `app`, `pages`, layouts, providers, services, features, hooks e contracts
-- Para backend:
-  - comece por bootstrap HTTP, rotas, controllers, presenters, use cases, entities, repositories e adapters
-- Para bibliotecas e packages:
-  - comece por exports publicos, factories, registries, adapters e testes
-- Para incidentes:
-  - comece pelo sintoma observavel e caminhe para tras pelo fluxo real
+- Start with:
+  - `package.json`, `turbo.json`, manifests, framework configs, app bootstrap, route registries, and composition points
+- For frontend:
+  - start with `app`, `pages`, layouts, providers, services, features, hooks, and contracts
+- For backend:
+  - start with HTTP bootstrap, routes, controllers, presenters, use cases, entities, repositories, and adapters
+- For libraries and packages:
+  - start with public exports, factories, registries, adapters, and tests
+- For incidents:
+  - start from the observable symptom and walk backward through the real flow
 
-## Perguntas obrigatorias por descoberta
+## Required Questions Per Discovery
 
-Quando descobrir algo importante, este skill deve tentar responder, com evidencia, perguntas como:
+When discovering something important, this skill should try to answer, with evidence, questions such as:
 
-- qual arquivo introduz isso no runtime
-- quem chama isso
-- quem e chamado por isso
-- qual contrato segura essa troca
-- onde isso muda de forma, camada ou responsabilidade
-- qual parte e regra de negocio e qual parte e detalhe de framework
-- onde existem duplicacoes, excecoes ou atalhos
-- o que um engenheiro novo precisaria saber para nao interpretar isso errado
+- which file introduces this into runtime
+- who calls this
+- who is called by this
+- which contract supports this exchange
+- where this changes form, layer, or responsibility
+- which part is business logic and which part is framework detail
+- where duplicates, exceptions, or shortcuts exist
+- what a new engineer would need to know to avoid misreading this
 
-## Quando combinar com outras skills
+## When To Combine With Other Skills
 
-- Use `debug` quando a tarefa exigir isolamento sistematico de bug e verificacao de causa raiz.
-- Use `explain-code` quando a prioridade for didatica e analogias, nao mapeamento profundo.
-- Use skills arquiteturais especificas quando o repositorio ja tiver um contrato de camada explicito.
+- Use `debug` when the task requires systematic bug isolation and root-cause verification.
+- Use `explain-code` when the priority is teaching and analogies, not deep mapping.
+- Use specialized architecture skills when the repository already has an explicit layer contract.

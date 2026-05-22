@@ -1,86 +1,86 @@
 # Output Contract
 
-Toda resposta deste skill deve seguir este contrato minimo.
+Every response from this skill must follow this minimum contract.
 
-O objetivo final e produzir um relatorio de engenharia reversa que sirva como base de conhecimento para engenheiros que precisam entender um projeto feito por terceiros.
+The end goal is to produce a reverse-engineering report that serves as a knowledge base for engineers who need to understand a project built by third parties.
 
-Quando a tarefa pedir export estruturado, a saida deve ser organizada em:
+When the task calls for structured export, the output must be organized as:
 
-- `reports/<NomeDoProjeto>/REVERSE-ENGINEERING.md`
-- `reports/<NomeDoProjeto>/ONBOARDING-GUIDE.md`
-- `reports/<NomeDoProjeto>/ARCHITECTURE-GRAPHS.md`
+- `reports/<ProjectName>/REVERSE-ENGINEERING.md`
+- `reports/<ProjectName>/ONBOARDING-GUIDE.md`
+- `reports/<ProjectName>/ARCHITECTURE-GRAPHS.md`
 
-Os documentos textuais devem referenciar o arquivo de graficos quando a visualizacao ajudar a entender fluxos, conexoes ou boundaries.
+Text documents should reference the graphs file when visualization helps explain flows, connections, or boundaries.
 
-## 1. Resumo
+## 1. Summary
 
-- Responda a pergunta principal em linguagem direta.
-- Diga o que esta confirmado no codigo.
-- Se houver incerteza, explicite.
+- Answer the main question in direct language.
+- State what is confirmed in the code.
+- If there is uncertainty, say so explicitly.
 
-## 2. Como funciona
+## 2. How It Works
 
-- Descreva o fluxo real em ordem.
-- Cubra o fluxo ponta a ponta, da entrada inicial ate a saida final, sempre que o recorte permitir.
-- Cite arquivos, modulos, simbolos ou pontos de composicao relevantes.
-- Separe `fluxo confirmado` de `hipotese ainda nao confirmada` quando necessario.
+- Describe the real flow in order.
+- Cover the end-to-end flow, from the initial input to the final output, whenever the scope allows.
+- Cite relevant files, modules, symbols, or composition points.
+- Separate `confirmed flow` from `unconfirmed hypothesis` when needed.
 
-## 3. Por que funciona assim
+## 3. Why It Works This Way
 
-- Explique a estrutura com base em evidencias do repositorio.
-- Aponte camadas, boundaries, contratos, adapters, factories ou outras regras estruturais observadas.
-- Nao atribua intencao sem evidencia local.
+- Explain the structure based on repository evidence.
+- Point out layers, boundaries, contracts, adapters, factories, or other observed structural rules.
+- Do not attribute intent without local evidence.
 
-## 4. Padroes encontrados
+## 4. Patterns Found
 
-- Liste os padroes estruturais efetivamente encontrados no codigo.
-- Para cada padrao, diga onde ele aparece e por que essa leitura e sustentada por evidencia.
-- Se houver duvida, marque explicitamente como `nao confirmado no codigo lido`.
+- List the structural patterns actually found in the code.
+- For each pattern, say where it appears and why that reading is supported by evidence.
+- If there is doubt, mark it explicitly as `not confirmed in the code reviewed`.
 
-## 5. Grafo
+## 5. Graph
 
-- Inclua um grafo ASCII quando ele ajudar a visualizar fluxo, dependencias ou propagacao de falha.
-- Prefira grafo pequeno, legivel e baseado no fluxo confirmado.
+- Include an ASCII graph when it helps visualize flow, dependencies, or failure propagation.
+- Prefer a small, readable graph grounded in the confirmed flow.
 
-Exemplo:
+Example:
 
 ```text
-entrada
-  -> rota/controller
-  -> use-case/servico
-  -> adapter/repositorio
-  -> persistencia ou saida
+input
+  -> route/controller
+  -> use-case/service
+  -> adapter/repository
+  -> persistence or output
 ```
 
-## 6. Exemplo concreto
+## 6. Concrete Example
 
-- Mostre um caminho real do repositorio.
-- Use pelo menos um arquivo ou trecho nominal para ancorar a explicacao.
+- Show a real path through the repository.
+- Use at least one specific file or named snippet to anchor the explanation.
 
-## 7. Lacunas ou proximos arquivos a ler
+## 7. Gaps Or Next Files To Read
 
-- Liste o que ainda nao foi confirmado.
-- Diga quais arquivos devem ser lidos para fechar a resposta.
-- Use frases explicitas como:
-  - `nao confirmado no codigo lido`
-  - `nao encontrei evidencia local para isso`
-  - `preciso ler mais arquivos para fechar essa resposta`
+- List what has not yet been confirmed.
+- State which files should be read to close the answer.
+- Use explicit phrases such as:
+  - `not confirmed in the code reviewed`
+  - `I did not find local evidence for this`
+  - `I need to read more files to close this answer`
 
-## Profundidade obrigatoria
+## Required Depth
 
-Antes de concluir, o skill deve se auto responder perguntas como:
+Before concluding, the skill should answer questions like:
 
-- por que acredito que esse fluxo comeca aqui
-- que arquivo confirma essa regra
-- que modulo depende disso
-- existe excecao para esse comportamento
-- como esse dado muda ao atravessar camadas
-- o que ainda nao foi explicado sobre esse trecho
+- why do I believe this flow starts here
+- which file confirms this rule
+- which module depends on this
+- is there an exception for this behavior
+- how does this data change as it crosses layers
+- what has not yet been explained about this section
 
-Se essas perguntas abrirem novas trilhas relevantes, o skill deve investigar mais antes de fechar o relatorio.
+If those questions open new relevant trails, the skill should investigate further before closing the report.
 
-## Artefatos visuais
+## Visual Artifacts
 
-- Gere diagramas Mermaid quando a estrutura do sistema, os fluxos por harness, os boundaries ou as conexoes ficarem mais claros visualmente.
-- Se os diagramas ficarem extensos ou forem reutilizaveis, extraia-os para `ARCHITECTURE-GRAPHS.md`.
-- Em `REVERSE-ENGINEERING.md` e `ONBOARDING-GUIDE.md`, aponte explicitamente para `ARCHITECTURE-GRAPHS.md` quando isso ajudar.
+- Generate Mermaid diagrams when the system structure, harness-specific flows, boundaries, or connections become clearer visually.
+- If the diagrams become long or reusable, extract them into `ARCHITECTURE-GRAPHS.md`.
+- In `REVERSE-ENGINEERING.md` and `ONBOARDING-GUIDE.md`, point explicitly to `ARCHITECTURE-GRAPHS.md` when that helps.

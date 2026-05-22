@@ -1,62 +1,62 @@
 # Investigation Checklist
 
-Use esta checklist antes de concluir qualquer analise.
+Use this checklist before concluding any analysis.
 
-## 1. Pergunta operacional
+## 1. Operational Question
 
-- Qual pergunta real precisa ser respondida?
-- O objetivo e explicar arquitetura, achar entrypoint, seguir fluxo ou depurar bug?
-- O recorte esta claro: feature, modulo, request, tela, job, comando ou incidente?
+- What real question needs to be answered?
+- Is the goal to explain architecture, find the entrypoint, trace a flow, or debug a bug?
+- Is the scope clear: feature, module, request, screen, job, command, or incident?
 
-## 2. Bootstrap e entrypoints
+## 2. Bootstrap And Entrypoints
 
-- Li os manifests principais?
-- Li os arquivos de bootstrap relevantes?
-- Identifiquei por onde esse fluxo entra em runtime?
-- Separei entrypoint confirmado de entrypoint apenas suspeito?
+- Did I read the main manifests?
+- Did I read the relevant bootstrap files?
+- Did I identify where this flow enters runtime?
+- Did I separate a confirmed entrypoint from one that is only suspected?
 
-## 3. Fluxo real
+## 3. Real Flow
 
-- Quem recebe a entrada?
-- Quem valida?
-- Quem transforma?
-- Quem orquestra?
-- Quem chama integracoes externas?
-- Quem persiste, renderiza ou publica?
+- Who receives the input?
+- Who validates it?
+- Who transforms it?
+- Who orchestrates it?
+- Who calls external integrations?
+- Who persists, renders, or publishes it?
 
-## 4. Auto-perguntas profundas
+## 4. Deep Self-Questions
 
-- Para cada regra descoberta, perguntei de onde ela nasce?
-- Perguntei quem depende dela e quem quebraria se ela mudasse?
-- Perguntei se ela vale para todo o sistema ou so para esse fluxo?
-- Procurei excecoes, contradicoes ou forks dessa regra?
-- Procurei o contrato, boundary ou adapter que sustenta esse comportamento?
-- Continuei investigando ate parar de achar novas perguntas relevantes?
+- For each discovered rule, did I ask where it originates?
+- Did I ask who depends on it and who would break if it changed?
+- Did I ask whether it applies to the whole system or only this flow?
+- Did I look for exceptions, contradictions, or forks of that rule?
+- Did I look for the contract, boundary, or adapter that supports this behavior?
+- Did I keep investigating until I stopped finding new relevant questions?
 
-## 5. Evidencia concreta
+## 5. Concrete Evidence
 
-- Tenho arquivos especificos para sustentar cada afirmacao importante?
-- Tenho simbolos, imports, chamadas, rotas, schemas ou configs que provam o fluxo?
-- Estou descrevendo o que li ou completando lacunas por intuicao?
+- Do I have specific files to support each important claim?
+- Do I have symbols, imports, calls, routes, schemas, or configs that prove the flow?
+- Am I describing what I read or filling gaps with intuition?
 
-## 6. Estrutura
+## 6. Structure
 
-- Quais camadas realmente aparecem no codigo?
-- Qual a direcao de dependencia entre elas?
-- Existem contratos, interfaces, adapters, factories ou registries?
-- Onde o framework termina e onde a regra de negocio comeca?
+- Which layers actually appear in the code?
+- What is the dependency direction between them?
+- Are there contracts, interfaces, adapters, factories, or registries?
+- Where does the framework end and where does business logic begin?
 
-## 7. Causalidade tecnica
+## 7. Technical Causality
 
-- Se estou falando de bug, segui o sintoma ate a origem?
-- Se estou falando de arquitetura, expliquei o porque estrutural com base no codigo?
-- Marquei claramente o que e `fluxo confirmado` e o que e `hipotese ainda nao confirmada`?
+- If I am talking about a bug, did I trace the symptom to its origin?
+- If I am talking about architecture, did I explain the structural why based on the code?
+- Did I clearly mark what is `confirmed flow` and what is `unconfirmed hypothesis`?
 
-## 8. Fechamento
+## 8. Closeout
 
-- A resposta termina como relatorio de engenharia reversa util para outros engenheiros?
-- A resposta cobre fluxo ponta a ponta, padroes encontrados e lacunas restantes?
-- Se houver export, a estrutura `reports/<NomeDoProjeto>/` foi criada?
-- Os tres arquivos padrao foram gerados quando aplicavel?
-- Tudo o que estou afirmando esta confirmado no codigo lido?
-- Se nao estiver, eu disse explicitamente que nao confirmei?
+- Does the response end as a reverse-engineering report useful to other engineers?
+- Does the response cover the end-to-end flow, patterns found, and remaining gaps?
+- If there is export, was the `reports/<ProjectName>/` structure created?
+- Were the three standard files generated when applicable?
+- Is everything I am claiming confirmed in the reviewed code?
+- If not, did I say explicitly that I did not confirm it?

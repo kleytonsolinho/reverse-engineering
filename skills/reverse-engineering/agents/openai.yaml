@@ -1,6 +1,6 @@
 interface:
   display_name: "Reverse Engineering"
   short_description: "Natural-language entrypoint for full repository reverse engineering with report export."
-  default_prompt: "Faça uma engenharia reversa completa deste repositório."
+  default_prompt: "Do a full reverse engineering of this repository."
 policy:
   allow_implicit_invocation: true

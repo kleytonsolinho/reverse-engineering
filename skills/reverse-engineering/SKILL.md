@@ -1,6 +1,6 @@
 ---
 name: reverse-engineering
-description: Use este skill quando o usuario pedir uma engenharia reversa, analise arquitetural, mapeamento de entrypoints, entendimento profundo de um repositorio, ou um relatorio tecnico sobre como o sistema funciona na pratica.
+description: Use this skill when the user asks for reverse engineering, architecture analysis, entrypoint mapping, deep repository understanding, or a technical report about how the system works in practice.
 metadata:
   priority: 10
   promptSignals:
@@ -67,67 +67,67 @@ metadata:
 
 # Reverse Engineering
 
-Quando o usuario pedir uma engenharia reversa de um repositorio, este skill deve assumir o trabalho completo.
+When the user asks for reverse engineering of a repository, this skill should take ownership of the full workflow.
 
-Nao espere instrucoes adicionais sobre:
+Do not wait for additional instructions about:
 
-- como investigar
-- quais arquivos ler primeiro
-- qual formato exportar
-- qual estrutura de relatorio usar
+- how to investigate
+- which files to read first
+- which export format to use
+- which report structure to use
 
-Voce deve conduzir a investigacao e entregar o resultado no padrao oficial deste plugin.
+You should lead the investigation and deliver the result using this plugin's official standard.
 
-## O que fazer
+## What To Do
 
-1. Entender como o repositorio funciona de verdade lendo o codigo.
-2. Localizar bootstrap, entrypoints e pontos reais de composicao.
-3. Seguir fluxos ponta a ponta com base em evidencia concreta.
-4. Identificar ownership, contratos, boundaries, adapters e padroes estruturais.
-5. Separar claramente:
-   - `fluxo confirmado`
-   - `hipotese ainda nao confirmada`
-6. Exportar o resultado obrigatoriamente em:
-   - `reports/<NomeDoProjeto>/REVERSE-ENGINEERING.md`
-   - `reports/<NomeDoProjeto>/ONBOARDING-GUIDE.md`
-   - `reports/<NomeDoProjeto>/ARCHITECTURE-GRAPHS.md`
+1. Understand how the repository actually works by reading the code.
+2. Locate bootstrap files, entrypoints, and real composition points.
+3. Trace end-to-end flows using concrete evidence.
+4. Identify ownership, contracts, boundaries, adapters, and structural patterns.
+5. Clearly separate:
+   - `confirmed flow`
+   - `unconfirmed hypothesis`
+6. Export the result to:
+   - `reports/<ProjectName>/REVERSE-ENGINEERING.md`
+   - `reports/<ProjectName>/ONBOARDING-GUIDE.md`
+   - `reports/<ProjectName>/ARCHITECTURE-GRAPHS.md`
 
-## Idioma
+## Language
 
-- Detecte o idioma principal do pedido do usuario.
-- Escreva os tres reports no mesmo idioma do pedido do usuario.
-- Mantenha fixos os nomes dos arquivos exportados:
+- Detect the primary language of the user's request.
+- Write all three reports in the same language as the user's request.
+- Keep exported file names fixed:
   - `REVERSE-ENGINEERING.md`
   - `ONBOARDING-GUIDE.md`
   - `ARCHITECTURE-GRAPHS.md`
-- Se o usuario misturar idiomas, use o idioma predominante do pedido inicial.
-- Se o idioma nao estiver claro, use ingles.
+- If the user mixes languages, use the predominant language from the initial request.
+- If the language is unclear, use English.
 
-## Comportamento obrigatorio
+## Required Behavior
 
-- Nao suponha nada sem evidencia local.
-- Nao responda apenas em texto solto quando o pedido for uma engenharia reversa completa.
-- Nao pare em um resumo curto se o pedido implica mapeamento estrutural do repositorio.
-- Se o usuario nao especificar o nome do projeto para a pasta `reports/`, derive um nome razoavel a partir do repositorio atual.
-- Aceite pedidos naturais em portugues, ingles e espanhol sem exigir o nome do skill.
+- Do not assume anything without local evidence.
+- Do not answer with loose prose only when the request is for full reverse engineering.
+- Do not stop at a short summary if the request implies structural repository mapping.
+- If the user does not specify the project name for the `reports/` folder, derive a reasonable name from the current repository.
+- Accept natural requests in Portuguese, English, and Spanish without requiring the skill name.
 
-## Fluxo de execucao
+## Execution Flow
 
-Este skill deve executar a metodologia principal definida em `../codebase-reverse-engineering/SKILL.md`.
+This skill should execute the primary methodology defined in `../codebase-reverse-engineering/SKILL.md`.
 
-Antes de concluir:
+Before concluding:
 
-- leia `../codebase-reverse-engineering/references/investigation-checklist.md`
-- siga o contrato em `../codebase-reverse-engineering/references/output-contract.md`
-- siga o padrao de idioma em `../shared/references/multilingual-export-pattern.md`
-- produza os tres arquivos de exportacao no padrao oficial
+- read `../codebase-reverse-engineering/references/investigation-checklist.md`
+- follow the contract in `../codebase-reverse-engineering/references/output-contract.md`
+- follow the language pattern in `../shared/references/multilingual-export-pattern.md`
+- produce the three export files using the official structure
 
-## Entrega esperada
+## Expected Delivery
 
-Se o usuario pedir engenharia reversa deste repositorio, a resposta correta nao e apenas explicar.
+If the user asks for reverse engineering of this repository, the correct response is not just to explain it.
 
-A resposta correta e:
+The correct response is:
 
-1. investigar
-2. exportar
-3. responder com base no material gerado
+1. investigate
+2. export
+3. answer based on the generated material

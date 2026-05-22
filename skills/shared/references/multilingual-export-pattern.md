@@ -1,66 +1,66 @@
 # Multilingual Export Pattern
 
-Use este padrao quando um skill ou agente precisar aceitar pedidos em linguas diferentes, mas ainda assim produzir artefatos estruturados em um formato fixo.
+Use this pattern when a skill or agent needs to accept requests in different languages while still producing structured artifacts in a fixed format.
 
-## Objetivo
+## Goal
 
-Permitir que o usuario fale naturalmente no idioma dele sem precisar aprender nomes tecnicos do plugin, while keeping export structure deterministic.
+Allow the user to speak naturally in their own language without having to learn the plugin's technical names, while keeping the export structure deterministic.
 
-## Regras
+## Rules
 
-1. Detecte o idioma principal do pedido inicial do usuario.
-2. Responda ao usuario no mesmo idioma predominante.
-3. Escreva o conteudo dos artefatos exportados no mesmo idioma do pedido inicial.
-4. Mantenha fixos nomes de arquivos, slugs, ids tecnicos e caminhos estruturais.
-5. Se o pedido misturar idiomas, escolha o idioma predominante do primeiro pedido relevante.
-6. Se o idioma nao estiver claro, use ingles como fallback.
+1. Detect the primary language of the user's initial request.
+2. Respond to the user in that same predominant language.
+3. Write the contents of exported artifacts in the same language as the initial request.
+4. Keep file names, slugs, technical ids, and structural paths fixed.
+5. If the request mixes languages, choose the predominant language from the first relevant request.
+6. If the language is unclear, use English as the fallback.
 
-## O que fica localizado
+## What Stays Localized
 
-- introducoes
-- explicacoes
-- tabelas
+- introductions
+- explanations
+- tables
 - checklists
-- exemplos narrativos
-- titulos de secoes dentro dos reports
+- narrative examples
+- section titles inside the reports
 
-## O que fica fixo
+## What Stays Fixed
 
-- nomes de arquivo
-- nomes de skill
-- ids tecnicos
-- nomes de pasta
-- chaves de configuracao
-- caminhos de exportacao
+- file names
+- skill names
+- technical ids
+- folder names
+- configuration keys
+- export paths
 
-## Exemplo
+## Example
 
-Pedido em portugues:
+Request in Portuguese:
 
 - export path:
   - `reports/MyProject/REVERSE-ENGINEERING.md`
 - report language:
-  - portugues
+  - Portuguese
 
-Pedido em espanhol:
+Request in Spanish:
 
 - export path:
   - `reports/MyProject/ONBOARDING-GUIDE.md`
 - report language:
-  - espanhol
+  - Spanish
 
-Pedido em ingles:
+Request in English:
 
 - export path:
   - `reports/MyProject/ARCHITECTURE-GRAPHS.md`
 - report language:
-  - ingles
+  - English
 
-## Reutilizacao em novos agentes
+## Reuse In New Agents
 
-Ao criar novos agentes ou skills:
+When creating new agents or skills:
 
-- reutilize este padrao para separar idioma do usuario de estrutura tecnica
-- mantenha o contrato de export estavel
-- adicione prompt signals em mais de um idioma
-- nao force o usuario a invocar o skill por nome quando a intencao puder ser inferida
+- reuse this pattern to separate user language from technical structure
+- keep the export contract stable
+- add prompt signals in more than one language
+- do not force the user to invoke the skill by name when the intent can be inferred
